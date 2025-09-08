@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HyperCoin - Mining Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-logo"></i></div>
+          <div class="sidebar-brand">
+            <a class="sidebar-brand" href="index.html"> <i style="margin-right: 10px;" class="fas fa-coins"> </i>  HyperCoin</a>
+          </div>
+
+          <ul class="sidebar-nav">
+            <li>
+              <a onclick="hideonClick()" href="#" class="active"
+                ><i class="fas fa-home"></i> Dashboard</a
+              >
+            </li>
+            <li>
+              <a onclick="hideonClick()" href="#mining-control"
+                ><i class="fas fa-hard-hat"></i> Investments</a
+              >
+            </li>
+            <li>
+              <a onclick="hideonClick()" href="#"
+                ><i class="fas fa-wallet"></i> Wallet</a
+              >
+            </li>
+            <li>
+              <a onclick="hideonClick()" href="#transactions"
+                ><i class="fas fa-exchange-alt"></i> Transactions</a
+              >
+            </li>
+            <li>
+              <a onclick="hideonClick()" href="#configure-user"
+                ><i class="fas fa-cog"></i> Settings</a
+              >
+            </li>
+  
+            <div class="sidebar-footer">
+              <div class="user-info">
+                <div id="user-avatarr" class="user-avatar">GI</div>
+                <div class="user-details">
+                  <div id="usernamee" class="user-name">Guest</div>
+                  <div id="user-role" class="user-role"> <i class="fa-solid fa-circle" style="color: gray;margin-right:6px;"></i> Guest Investor</div>
+                </div>
+              </div>
+              <button id="logout-btn" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+              </button>
+            </div>
+          </ul>
+        </div>
+
+       
+
+        
+      </aside>
+
+      
+
+      <!-- Overlay for mobile -->
+      <div class="overlay" id="overlay"></div>
+     
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Header -->
+        <header class="header">
+          <div class="header-left">
+            <button aria-label="menuToggle" class="menu-toggle" id="menuToggle">
+              <i class="fas fa-bars"></i>
+            </button>
+            <h1 id="page-title" class="page-title"></h1>
+          </div>
+          <div class="header-right">
+            <button aria-label="theme-toggle" class="theme-toggle" id="themeToggle">🌙</button>
+            
+            <div class="notifications">
+              <button id="notification-btn" aria-label="notification-btn" class="notification-btn">
+                <i class="fas fa-bell"></i>
+              </button>
+              <span id="notification-badge" class="notification-badge"></span>
+            </div>
+            <div class="user-menu">
+              <div id="user-avatar" class="user-avatar"></div>
+              
+            </div>
+          </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+          <!-- Stats Grid -->
+          <div class="stats-grid">
+            <!-- Balance Card -->
+<div class="stat-card">
+  <div class="stat-header"> 
+    <div class="stat-title">BALANCE</div>
+    <div class="stat-icon">
+      <i class="fas fa-wallet"></i>
+    </div>
+  </div>
+  <div id="balance-value" class="stat-value">£0.00</div>
+  <div class="weekly-high">
+    <span id="dailyhigh" class="gold-text">£0.00</span> 
+  </div>
+  <div id="balancesig" class="stat-change">
+    <i class="fas fa-arrow-up"></i>
+    <span id="balance-change">0.00%</span>
+     </div>
+  <small style="font: 100; font-family: monospace;"> <i class="fa-solid fa-bell"></i> updates every minute</small>
+</div>
+            <!-- Hash Rate Card -->
+<div class="stat-card">
+  <div class="stat-header">
+    <div class="stat-title">HASH RATE</div>
+    <div class="stat-icon">
+      <i class="fas fa-tachometer-alt"></i>
+    </div>
+  </div>
+  <div id="hash-value" class="stat-value">0 MH/s</div>
+  <div class="weekly-high">
+    <span id="dailyhighhash" class="gold-text">0 MH/s</span> weekly high
+  </div>
+  <div id="hashsig" class="stat-change">
+    <i class="fas fa-arrow-up"></i>
+    <span id="hash-change">0 MH/s</span>
+  </div>
+</div>
+
+
+             
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-title">ACTIVE INVESTORS IN YOUR CITY</div>
+                <div class="stat-icon">
+                  <i class="fas fa-server"></i>
+                </div>
+              </div>
+              <div id="active-users" class="stat-value"></div>
+              <div class="stat-change negative">
+                <i class="fas fa-arrow-down"></i> <span id="offline-users"></span> investors paused Investment
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-header">
+                <div class="stat-title">EST. REWARDS</div>
+                <div class="stat-icon">
+                  <i class="fas fa-gem"></i>
+                </div>
+              </div>
+              <div class="stat-value">0.85 HPC/day</div>
+              <div class="stat-change positive">
+                <i class="fas fa-arrow-up"></i> 5.3% since last week
+              </div>
+            </div>
+          </div>
+          <!-- Mining Control -->
+          <div id="mining-control" class="mining-control">
+            <div class="control-header">
+              <div class="control-title">Investment Control</div>
+              <div id="mining-status" class="mining-status status-inactive">
+                <i class="fas fa-circle"></i> <p id="miningState" ></p>
+              </div>
+            </div>
+            <p class="mining-info">
+              <p id="mining-info"></p>
+              <em style="color: darkcyan;" id="miningeff"> </em>
+            </p>
+            <div class="mining-progress">
+              <div id="progress-bar" class="progress-bar"></div>
+            </div>
+            <div class="mining-actions">
+              <button id="start-inv"  class="btn btn-primary" >
+                <i class="fas fa-play"></i> 
+              </button>
+              <button id="stop-inv" class="btn btn-outline">
+                <i class="fas fa-stop"></i> 
+              </button>
+              <a
+                style="text-decoration: none"
+                href="redirect.html"
+                class="btn btn-outline"
+                id="configure-plan"
+              >
+              
+              </a>
+
+              <a
+                style="text-decoration: none"
+                href="withdraw.html"
+                class="btn btn-outline"
+                id="withdraw"
+              >
+              
+              </a>
+
+            </div>
+
+
+           
+
+              <div id="take-p-div">
+               <h2> Profit Maximizer</h2>
+                <input id="take-p-balance" aria-label="number" step="0.01" type="number" >
+                <p id="take-p-msg"></p>
+                <button id="take-p">  <i id="tp" class="fa-solid fa-sack-dollar"></i>  Take Profit </button>
+                <p>  <i class="fa-solid fa-circle-info"></i> Take Profit sets a target balance at which your investment automatically pauses, helping you secure your profits.  </p>
+              </div>
+
+              <div id="stop-l-div">
+                <h2>Risk Protection</h2>
+                <input  id="stop-l-balance" aria-label="number" step="0.01" type="number">
+                <p id="stop-l-msg"></p>
+                <button id="stop-l"> <i id="st" class="fa-solid fa-ban"></i>  Stop Loss </button>
+                <p> <i class="fa-solid fa-circle-info"></i> Stop Loss sets a balance threshold to pause your investment, helping limit potential losses."  </p>
+              </div>
+
+          </div>
+
+          <!-- Transactions -->
+          <div id="transactions" class="transactions">
+            <div class="transactions-header">
+              <div class="transactions-title">Recent Transactions</div>
+              <a href="#" class="view-all">View All</a>
+            </div>
+            <div class="table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Jun 12, 2023</td>
+                    <td>Mining Reward</td>
+                    <td class="transaction-positive">+0.25 HPC</td>
+                    <td>
+                      <span class="status-badge status-completed"
+                        >Completed</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Jun 11, 2023</td>
+                    <td>Mining Reward</td>
+                    <td class="transaction-positive">+0.24 HPC</td>
+                    <td>
+                      <span class="status-badge status-completed"
+                        >Completed</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Jun 10, 2023</td>
+                    <td>Mining Reward</td>
+                    <td class="transaction-positive">+0.26 HPC</td>
+                    <td>
+                      <span class="status-badge status-completed"
+                        >Completed</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Jun 9, 2023</td>
+                    <td>Transfer</td>
+                    <td class="transaction-negative">-1.50 HPC</td>
+                    <td>
+                      <span class="status-badge status-completed"
+                        >Completed</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Jun 8, 2023</td>
+                    <td>Mining Reward</td>
+                    <td class="transaction-positive">+0.23 HPC</td>
+                    <td>
+                      <span class="status-badge status-pending">Pending</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- User Configuration Section -->
+        <div id="configure-user" class="configure-user">
+          <!-- Profile Header -->
+          <div class="profile-header">
+            <h2>User Profile</h2>
+            <b>Username</b>
+            <p id="profile-user">Guest</p>
+            <b>Account type</b>
+            <p id="profile-usertype">Guest</p>
+            <em id="rec"></em>
+          </div>
+
+          <!-- Avatar Section -->
+          <div class="avatar-section">
+            <div class="avatar-display">
+              <img
+                src=""
+                alt="User Avatar"
+                id="user-avatar-img"
+                class="avatar-image"
+              />
+            </div>
+            <select id="avatar-controls" class="avatar-controls">
+              <option
+                value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtKo3DRYU85GpZIcgefsrYnWNY2im4xLtJyQ&s"
+                class="avatar-btn"
+              >
+                Change Avatar
+              </option>
+              <option
+                value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbYF7PxcLfnDyphuT97RI6s3zww1SiPygJng&s"
+                class="avatar-btn"
+              >
+                Gamer
+              </option>
+              <option
+              value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4JFhVqJ9068cOS1FB6yTjh5pZBAhYM9YdHQ&s"
+              class="avatar-btn"
+            >
+            
+              Lebron
+            </option>
+              <option
+                value="https://png.pngtree.com/png-clipart/20250228/original/pngtree-user-profile-avatar-with-horns-vector-png-image_20533683.png"
+                class="avatar-btn"
+              >
+              Glitch
+              </option>
+              <option
+              value="https://www.shutterstock.com/image-vector/art-sport-goal-score-winner-600nw-2345135343.jpg"
+              class="avatar-btn"
+            >
+            Ronaldo 
+            </option>
+            <option
+            value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTInZ_bh7A1F2imvWcgfw_-73_T0uGkOL8HPQ5idUoWFNtqjlCYU3HtjwxKnPEpFw5RVJg&usqp=CAU"
+            class="avatar-btn"
+          >
+            Messi
+          </option>
+          <option
+          value=" https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fbitcoin-profile&psig=AOvVaw1sXd9GEuwBAOrUiwPJwva8&ust=1756914551124000&source=images&cd=vfe&opi=89978449&ved=0CBYQjRxqFwoTCPjJrPG2uo8DFQAAAAAdAAAAABAE"
+          class="avatar-btn"
+        >
+          Crypto
+        </option>
+        <option
+        value="https://res.cloudinary.com/dazhskqcc/image/upload/v1756665264/ChatGPT_Image_Aug_29_2025_12_02_56_PM_bmaix8.png"
+        class="avatar-btn"
+      >
+        HPC
+      </option>
+         
+            </select>
+          </div>
+
+          <!-- Password Recovery Section -->
+          <h3>Password Options</h3>
+          <div class="password-recovery">
+            
+            <div id="recovery-actions" class="recovery-actions">
+              <button type="button" id="forgot-password">
+                Reset Password?
+              </button>
+              
+              <button type="button" id="change-password">
+                Resquest Code
+              </button>
+              <input type="text" id="psInput">
+              <button onclick="verifyCode()" type="button" id="vinput">
+                Verify Input
+              </button>
+            </div>
+          </div>
+          
+          <div id="reset-container" class="reset-container">
+            <div class="reset-card">
+              <h2>Reset Your Password</h2>
+              <p>Please enter your new password below to complete the reset process.</p>
+              <form>
+                <div class="form-group">
+                  <input style="display: none;" type="text" autocomplete="username">
+                  <label for="new-password">New Password</label>
+                  <input type="password" autocomplete="new-password"  placeholder="Enter new password" required />
+                </div>
+                <div class="form-group">
+                  <label for="confirm-password">Confirm Password</label>
+                  <input id="new-password" autocomplete="new-password" type="password" placeholder="Confirm new password" required />
+                </div>
+                <button id="confirm-password" type="submit" class="btn-confirm">Reset Password</button>
+              </form>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div id="notification-overlay" class="notification-overlay"> </div>
+    <div id="notification-msg" class="notification-msg">
+      <h2 style="text-align: center;">MESSAGES</h2>
+      
+    </div>
+
+    <script src="dashboard.js" defer></script>
+  </body>
+</html>

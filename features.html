@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HYPERCOIN - Crypto Investment Features</title>
+    <link rel="stylesheet" href="features.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container header-container">
+        <div class="logo">
+          <div class="logo-icon"><i class="fas fa-coins"></i></div>
+          <div class="logo-text"><a href="index.html">HyperCoin</a></div>
+        </div>
+
+        <nav class="desktop-nav">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="features.html">Pricing</a>
+          <a href="login.html">Login</a>
+        </nav>
+
+        <div class="auth-buttons">
+          <button id="themeToggle">🌙</button>
+          <a href="login.html" class="btn btn-outline">Login</a>
+          <a href="signup.html" class="btn btn-primary">Sign Up</a>
+        </div>
+
+        <button class="mobile-nav-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+
+      <nav class="mobile-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="features.html">Pricing</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign Up</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <h1>Maximize Your Crypto Investing Potential</h1>
+        <p>
+          Join thousands of users Investing HYPERCOIN with our advanced cloud
+          mining platform. Choose your plan and start earning today!
+        </p>
+      </section>
+
+      <section class="mining-stats">
+        <div class="stat-card">
+          <div class="stat-value">12,458</div>
+          <div class="stat-label">ACTIVE Investors</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">4.28%</div>
+          <div class="stat-label">DAILY PROFIT</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">$1.M</div>
+          <div class="stat-label">TOTAL EARNED</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">90.7%</div>
+          <div class="stat-label">UPTIME</div>
+        </div>
+      </section>
+
+      <section class="mining-visualization">
+        <h2 class="section-title">Live Investment Simulation</h2>
+        <p>
+          Watch your HYPERCOIN Investments in real-time with our advanced
+          algorithms
+        </p>
+        <div class="mining-animation">
+          <div class="mining-rig">HPC</div>
+          <div class="coin"></div>
+          <div class="coin"></div>
+          <div class="coin"></div>
+          <div class="coin"></div>
+        </div>
+      </section>
+
+      <section id="calculator" class="calculator">
+        <h2 class="section-title">Investor Calculator</h2>
+        <div class="calculator-form">
+          <div class="form-group">
+            <label for="planSelect">Select Plan</label>
+            <span id="planSelect">Current average conversion </span> <br />
+            <em>1HPC = 1.5 UDS</em>
+          </div>
+          <div class="form-group">
+            <label for="investmentAmount">Investment Amount ($)</label>
+            <input type="number" id="investmentAmount" value="4.99" />
+          </div>
+          <div class="calculator-result">
+            <h3>Projected Monthly Earnings</h3>
+            <div class="result-value" id="earningsResult">5.2 HYPER</div>
+            <p>BASED ON SCARCITY, UTILITY, ADOPTION, AND MARKET FORCES.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="logo">
+          <span class="logo-icon"><i class="fas fa-coins"></i></span>
+          <span>HYPERCOIN</span>
+        </div>
+        <ul class="footer-links">
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Support</a></li>
+        </ul>
+        <p>© 2023 HYPERCOIN Investment Platform. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Theme Toggle
+      const themeToggle = document.getElementById("themeToggle");
+      themeToggle.addEventListener("click", () => {
+        document.body.dataset.theme =
+          document.body.dataset.theme === "dark" ? "light" : "dark";
+        themeToggle.textContent =
+          document.body.dataset.theme === "dark" ? "☀️" : "🌙";
+      });
+
+      // Investment Calculator
+      const investmentAmount = document.getElementById("investmentAmount");
+      const earningsResult = document.getElementById("earningsResult");
+      function calculateEarnings() {
+        const planValue = parseFloat(planSelect.value);
+        let amount = parseFloat(investmentAmount.value);
+
+        if (isNaN(amount) || amount <= 0) {
+          earningsResult.textContent = `0 USD`;
+          return;
+        }
+
+        let earnings = amount * 1.5;
+
+        earningsResult.textContent = `${earnings.toFixed(1)} USD`;
+      }
+
+      investmentAmount.addEventListener("input", calculateEarnings);
+
+      // Initialize calculator
+      calculateEarnings();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bank Withdrawal</title>
+    <style>
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --secondary: #7e22ce;
+  --text: #1f2937;
+  --text-light: #6b7280;
+  --bg: #f9fafb;
+  --bg-card: #ffffff;
+  --border: #e5e7eb;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --miner: #ffd700;
+  --coins: #7e22ce;
+  --miner-container: #2e2e327b;
+  --error: #ef4444;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --radius: 8px;
+}
+
+[data-theme="dark"] {
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --secondary: #a855f7;
+  --miner-container: rgba(18, 43, 56, 0.674);
+  --text: #f3f4f6;
+  --text-light: #d1d5db;
+  --bg: #111827;
+  --coins: yellow;
+  --bg-card: #1f2937;
+  --border: #374151;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+
+
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: large;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+      .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Header Styles */
+header {
+  background-color: var(--bg-card);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-icon {
+  font-size: 1.8rem;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.logo-text,
+.logo-text a {
+  font-size: xx-large;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+nav {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: larger;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: var(--primary);
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.btn {
+  padding: 0.5rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.desktop-nav a {
+  color: var(--text);
+  position: relative;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.desktop-nav a:hover,
+.desktop-nav a.active {
+  color: var(--primary);
+}
+
+.desktop-nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #3b82f6;
+  transition: width 0.3s;
+}
+
+.desktop-nav a:hover::after {
+  width: 100%;
+}
+
+/* Auth Buttons */
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.btn-outline:hover {
+  background-color: var(--border);
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+#themeToggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text);
+  transition: transform 0.3s;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg);
+}
+
+#themeToggle:hover {
+  transform: rotate(30deg);
+  background-color: var(--border);
+}
+      .containerr {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        width: 75%;
+        overflow: hidden;
+        margin: auto;
+        margin-top: 5%;
+      }
+
+      .header {
+        background: #2c3e50;
+        color: white;
+        padding: 25px;
+        text-align: center;
+      }
+
+      .header h1 {
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      .form-container {
+        padding: 30px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #2c3e50;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: border 0.3s;
+      }
+
+      .form-group input:focus {
+        border-color: #3498db;
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+      }
+
+      .btn {
+        background: #3498db;
+        color: white;
+        border: none;
+        padding: 15px;
+        width: 100%;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .btn:hover {
+        background: #2980b9;
+      }
+
+      .processing {
+        display: none;
+        text-align: center;
+        padding: 30px;
+        background: #ecf0f1;
+        border-radius: 10px;
+        margin-top: 20px;
+      }
+
+      .processing .spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid rgba(52, 152, 219, 0.2);
+        border-radius: 50%;
+        border-top-color: #3498db;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 20px;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .processing h2 {
+        color: #2c3e50;
+        margin-bottom: 10px;
+      }
+
+
+      .processing p {
+        color: #7f8c8d;
+        line-height: 1.6;
+      }
+
+      .success-icon {
+        color: #27ae60;
+        font-size: 50px;
+        margin-bottom: 20px;
+      }
+
+      .error {
+        color: #e74c3c;
+        font-size: 14px;
+        margin-top: 5px;
+        display: none;
+      }
+
+      @media (max-width:750px) {
+
+        .containerr{
+        width: 95%;
+      }
+
+      .desktop-nav{
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+        
+      }
+    </style>
+  </head>
+  <body>
+
+    <header>
+        <div class="header-container">
+          <div class="logo">
+            <div class="logo-icon"><i class="fas fa-coins"></i></div>
+            <div class="logo-text"><a href="index.html">HyperCoin</a></div>
+          </div>
+  
+          <nav class="desktop-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="features.html">Pricing</a>
+            <a href="login.html">Login</a>
+          </nav>
+      </header>
+    <div class="containerr">
+      <div class="header">
+        <h1>Bank Withdrawal</h1>
+      </div>
+
+      <div class="form-container">
+        <form id="withdrawalForm">
+          <div class="form-group">
+            <label for="sortCode">Bank Sort Code</label>
+            <input
+              type="text"
+              id="sortCode"
+              placeholder="e.g., 12-34-56"
+              required
+            />
+            <div class="error" id="sortCodeError">
+              Please enter a valid sort code (e.g., 12-34-56)
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="username">Username</label>
+            <p style="color: yellowgreen;">  <i style="color: rgb(205, 53, 50);" class="fa-solid fa-info"></i>  username must match your exact username registered for your hypercoin account</p>
+            <input
+              type="text"
+              id="username"
+              placeholder="Enter your username"
+              required
+            />
+            <div class="error" id="usernameError">
+              Please enter your username
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="accountNumber">Bank Account Number</label>
+            <input
+              type="text"
+              id="accountNumber"
+              placeholder="Enter your account number"
+              required
+            />
+            <div class="error" id="accountNumberError">
+              Please enter a valid account number
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="amount">Amount to Withdraw ($)</label>
+            <input
+              type="number"
+              id="amount"
+              placeholder="Enter amount"
+              min="1"
+              required
+            />
+            <div class="error" id="amountError">
+              Please enter a valid amount
+            </div>
+          </div>
+
+          <button type="submit" class="btn">Withdraw</button>
+        </form>
+
+        <div class="processing" id="processingMessage">
+          <div class="spinner"></div>
+          <h2>Withdrawal is Being Processed</h2>
+          <p>
+            Your withdrawal request is being processed. You will receive an
+            email confirmation once the request in completed.
+          </p>
+        </div>
+      </div>
+    </div>
+    <script>
+        document.getElementById("withdrawalForm").addEventListener("submit", async function (e) {
+          e.preventDefault();
+        
+          console.log("🔥 [FRONTEND] Withdrawal form submitted.");
+        
+          // Reset errors
+          document.querySelectorAll(".error").forEach((error) => {
+            error.style.display = "none";
+          });
+        
+          let isValid = true;
+        
+          // Validate sort code
+          const sortCode = document.getElementById("sortCode");
+          const sortCodeRegex = /^\d{2}-\d{2}-\d{2}$/;
+          if (!sortCodeRegex.test(sortCode.value)) {
+            document.getElementById("sortCodeError").style.display = "block";
+            isValid = false;
+          }
+        
+          // Validate username
+          const username = document.getElementById("username");
+          if (username.value.trim() === "") {
+            document.getElementById("usernameError").style.display = "block";
+            isValid = false;
+          }
+        
+          // Validate account number
+          const accountNumber = document.getElementById("accountNumber");
+          if (accountNumber.value.trim() === "" || isNaN(accountNumber.value)) {
+            document.getElementById("accountNumberError").style.display = "block";
+            isValid = false;
+          }
+        
+          // Validate amount
+          const amount = document.getElementById("amount");
+          if (amount.value === "" || amount.value <= 0) {
+            document.getElementById("amountError").style.display = "block";
+            isValid = false;
+          }
+        
+          if (!isValid) {
+            console.warn("⚠️ [FRONTEND] Form validation failed.");
+            return;
+          }
+        
+          // Show processing message
+          document.getElementById("processingMessage").style.display = "block";
+        
+          try {
+            console.log("🔑 [FRONTEND] Getting token from sessionStorage...");
+            const token = sessionStorage.getItem("refreshToken");
+        
+            if (!token) {
+              console.error("❌ No token found. Cannot proceed with withdrawal.");
+              alert("You must be logged in to withdraw.");
+              return;
+            }
+            const payload = {
+  token,
+  sortCode: sortCode.value,
+  accountNumber: accountNumber.value,
+  amount: parseFloat(amount.value).toFixed(2),
+};
+
+        
+            console.log("📤 [FRONTEND] Sending withdrawal request:", payload);
+        
+            const response = await fetch("https://backendroutes-lcpt.onrender.com/withdraw", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(payload),
+            });
+        
+            const result = await response.json();
+            console.log("✅ [FRONTEND] Withdrawal API response:", result);
+        
+            if (result.success) {
+              document.getElementById("processingMessage").innerHTML = `
+                <div class="success-icon">✓</div>
+                <h2>Withdrawal Request Submitted</h2>
+                <p>${result.message}</p>
+              `;
+            } else {
+              document.getElementById("processingMessage").innerHTML = `
+                <div class="error-icon">⚠️</div>
+                <h2>Withdrawal Failed</h2>
+                <p>${result.error || "Something went wrong"}</p>
+              `;
+            }
+          } catch (err) {
+            console.error("❌ [FRONTEND] Withdrawal request failed:", err);
+            document.getElementById("processingMessage").innerHTML = `
+              <div class="error-icon">⚠️</div>
+              <h2>Server Error</h2>
+              <p>Could not submit withdrawal. Please try again later.</p>
+            `;
+          }
+        });
+        </script>
+        
+  </body>
+</html>

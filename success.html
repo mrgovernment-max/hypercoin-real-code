@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Status</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 500px;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .header {
+        background: #10b981;
+        color: white;
+        padding: 30px;
+      }
+
+      .header i {
+        font-size: 60px;
+        margin-bottom: 15px;
+      }
+
+      .header h1 {
+        font-size: 28px;
+        font-weight: 600;
+      }
+
+      .content {
+        padding: 30px;
+      }
+
+      .status-message {
+        font-size: 20px;
+        color: #374151;
+        margin-bottom: 20px;
+        line-height: 1.5;
+      }
+
+      .processing-info {
+        background: #f0f9ff;
+        border-radius: 12px;
+        padding: 20px;
+        margin: 25px 0;
+        border-left: 4px solid #0ea5e9;
+      }
+
+      .processing-info h3 {
+        color: #0c4a6e;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .processing-info p {
+        color: #374151;
+        line-height: 1.6;
+      }
+
+      .details {
+        background: #f9fafb;
+        border-radius: 12px;
+        padding: 20px;
+        margin: 25px 0;
+        text-align: left;
+      }
+
+      .details h3 {
+        color: #374151;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .detail-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+      }
+
+      .detail-label {
+        color: #6b7280;
+        font-weight: 500;
+      }
+
+      .detail-value {
+        color: #374151;
+        font-weight: 600;
+      }
+
+      .actions {
+        display: flex;
+        gap: 15px;
+        margin-top: 30px;
+      }
+
+      .btn {
+        flex: 1;
+        padding: 16px;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .btn-primary {
+        background: #10b981;
+        color: white;
+        border: none;
+      }
+
+      .btn-primary:hover {
+        background: #059669;
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background: white;
+        color: #374151;
+        border: 1px solid #e5e7eb;
+      }
+
+      .btn-secondary:hover {
+        background: #f9fafb;
+        border-color: #d1d5db;
+      }
+
+      .footer {
+        padding: 20px;
+        color: #6b7280;
+        font-size: 14px;
+        border-top: 1px solid #e5e7eb;
+        background: #f9fafb;
+      }
+
+      .loader {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(16, 185, 129, 0.3);
+        border-radius: 50%;
+        border-top-color: #10b981;
+        animation: spin 1s ease-in-out infinite;
+        margin-right: 10px;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          border-radius: 12px;
+        }
+
+        .header {
+          padding: 25px;
+        }
+
+        .content {
+          padding: 20px;
+        }
+
+        .actions {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <i class="fas fa-check-circle"></i>
+        <h1>Payment Successful</h1>
+      </div>
+
+      <div class="content">
+        <div class="processing-info">
+          <h3><i class="fas fa-clock"></i> Processing Time</h3>
+          <p>
+            Your payment will be reflected in your account in less than 24
+            hours. You will receive a confirmation email once processed.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>
+          If you have any questions, contact our support team at
+          support@example.com
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

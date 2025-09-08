@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crypto Platform</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #0a0e17;
+        color: #e0e0e0;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      header {
+        background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #3b82f6;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo span {
+        color: #e0e0e0;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 2rem;
+      }
+
+      .nav-links a {
+        color: #e0e0e0;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+        padding: 0.5rem 0;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: #3b82f6;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #3b82f6;
+        transition: width 0.3s;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .page-section {
+        display: none;
+        padding: 3rem 0;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      .active-page {
+        display: block;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: #3b82f6;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+        margin: 1.5rem 0 1rem;
+        color: #60a5fa;
+      }
+
+      p {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+
+      .card {
+        background: #1e293b;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn {
+        display: inline-block;
+        background: #3b82f6;
+        color: white;
+        padding: 0.7rem 1.5rem;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background 0.3s;
+        border: none;
+        cursor: pointer;
+        margin-top: 1rem;
+      }
+
+      .btn:hover {
+        background: #2563eb;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .feature {
+        background: #1e293b;
+        padding: 1.5rem;
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #3b82f6;
+      }
+
+      .pricing-plans {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+
+      .plan {
+        background: #1e293b;
+        border-radius: 8px;
+        padding: 2rem;
+        text-align: center;
+        transition: transform 0.3s;
+      }
+
+      .plan:hover {
+        transform: translateY(-5px);
+      }
+
+      .plan h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #3b82f6;
+      }
+
+      .price {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 1rem 0;
+        color: #60a5fa;
+      }
+
+      .plan-features {
+        list-style: none;
+        margin: 1.5rem 0;
+      }
+
+      .plan-features li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #334155;
+      }
+
+      .api-endpoint {
+        background: #1e293b;
+        border-left: 4px solid #3b82f6;
+        padding: 1rem;
+        margin: 1rem 0;
+        font-family: monospace;
+      }
+
+      footer {
+        background: #0f172a;
+        padding: 2rem 0;
+        text-align: center;
+        margin-top: 3rem;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .nav-links li {
+          margin: 0.5rem 0;
+        }
+
+        .feature-grid,
+        .pricing-plans {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">Crypto<span>Platform</span></div>
+          <ul class="nav-links">
+            <li><a href="#" onclick="showPage('crypto-app')">Crypto App</a></li>
+            <li><a href="#" onclick="showPage('api')">API</a></li>
+            <li><a href="#" onclick="showPage('pricing')">Pricing</a></li>
+            <li><a href="#" onclick="showPage('about')">About Us</a></li>
+            <li><a href="#" onclick="showPage('careers')">Careers</a></li>
+            <li><a href="#" onclick="showPage('blog')">Blog</a></li>
+            <li><a href="#" onclick="showPage('press')">Press</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Crypto App Page -->
+      <section id="crypto-app" class="page-section active-page">
+        <h1>Crypto App</h1>
+        <p>
+          Our powerful cryptocurrency application allows you to track, trade,
+          and manage your digital assets all in one place.
+        </p>
+
+        <div class="card">
+          <h2>Real-time Market Data</h2>
+          <p>
+            Get live prices, charts, and market data for thousands of
+            cryptocurrencies from exchanges around the world.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Secure Wallet</h2>
+          <p>
+            Store your digital assets in our highly secure wallet with
+            multi-signature technology and cold storage options.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Easy Trading</h2>
+          <p>
+            Execute trades quickly with our intuitive interface and advanced
+            trading tools for both beginners and experts.
+          </p>
+        </div>
+      </section>
+
+      <!-- API Page -->
+      <section id="api" class="page-section">
+        <h1>API Integration</h1>
+        <p>
+          Integrate cryptocurrency data and functionality into your applications
+          with our powerful API.
+        </p>
+
+        <div class="card">
+          <h2>REST API</h2>
+          <p>
+            Access market data, execute trades, and manage accounts through our
+            RESTful API endpoints.
+          </p>
+          <div class="api-endpoint">GET https://coinmarketcap.com/</div>
+        </div>
+
+        <div class="card">
+          <h2>WebSocket Streams</h2>
+          <p>
+            Get real-time market data through our WebSocket connections for
+            instant updates.
+          </p>
+          <div class="api-endpoint">https://coinmarketcap.com/</div>
+        </div>
+      </section>
+
+      <!-- Pricing Page -->
+      <section id="pricing" class="page-section">
+        <h1>Pricing Plans</h1>
+        <p>
+          Choose the plan that works best for your trading needs and experience
+          level.
+        </p>
+
+        <div class="pricing-plans">
+          <div class="plan">
+            <h3>Starter</h3>
+            <div class="price">Free/No Funds Deposite</div>
+            <p>For beginners getting started with crypto</p>
+            <a href="signup.html" class="btn">Get Started</a>
+          </div>
+
+          <div class="plan">
+            <h3>Basic Trader</h3>
+            <div class="price">Min $10 Funds Deposite</div>
+            <p>For active traders</p>
+            <a href="signup.html" class="btn">Get Started</a>
+          </div>
+
+          <div class="plan">
+            <h3>Pro Trader</h3>
+            <div class="price">Min $20 Funds Deposite</div>
+            <p>For active traders</p>
+            <a href="signup.html" class="btn">Get Started</a>
+          </div>
+
+          <div class="plan">
+            <h3>Expertise</h3>
+            <div class="price">Min $30 Funds Deposite</div>
+            <p>For institutions and whales</p>
+            <a href="signup.html" class="btn">Contact Sales</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Us Page -->
+      <section id="about" class="page-section">
+        <h1>About Us</h1>
+        <p>
+          We're a team of passionate blockchain developers and financial experts
+          building the future of cryptocurrency trading.
+        </p>
+
+        <div class="card">
+          <h2>Our Mission</h2>
+          <p>
+            To make cryptocurrency accessible to everyone through intuitive
+            tools, educational resources, and a secure platform.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Our Team</h2>
+          <p>
+            Our diverse team brings together expertise from technology, finance,
+            and security to create the best crypto platform.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Company History</h2>
+          <p>
+            Founded in 2018, we've grown to serve over 1 million users across 50
+            countries with our cryptocurrency services.
+          </p>
+        </div>
+      </section>
+
+      <!-- Careers Page -->
+      <section id="careers" class="page-section">
+        <h1>Careers</h1>
+        <p>
+          Join our team and help shape the future of cryptocurrency and
+          blockchain technology.
+        </p>
+
+        <div class="card">
+          <h2>Why Work With Us?</h2>
+          <p>
+            We offer competitive compensation, flexible work arrangements, and
+            the opportunity to work on cutting-edge technology.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature">
+            <div class="feature-icon">💼</div>
+            <h3>Senior Blockchain Developer</h3>
+            <p>Design and implement blockchain solutions for our platform.</p>
+            <a href="#" class="btn">Apply Now</a>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">📊</div>
+            <h3>Data Analyst</h3>
+            <p>
+              Analyze market data and provide insights for our trading platform.
+            </p>
+            <a href="#" class="btn">Apply Now</a>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">🔒</div>
+            <h3>Security Engineer</h3>
+            <p>Help secure our platform and protect user assets.</p>
+            <a href="#" class="btn">Apply Now</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Blog Page -->
+      <section id="blog" class="page-section">
+        <h1>Blog</h1>
+        <p>
+          Stay up to date with the latest news, analysis, and educational
+          content from our team.
+        </p>
+
+        <div class="card">
+          <h2>Market Analysis: Bitcoin Outlook for 2023</h2>
+          <p>
+            Our experts analyze market trends and provide insights on where
+            Bitcoin might be headed in the coming year.
+          </p>
+          <a href="#" class="btn">Read More</a>
+        </div>
+
+        <div class="card">
+          <h2>Understanding DeFi: A Beginner's Guide</h2>
+          <p>
+            Learn about decentralized finance and how it's changing the
+            financial landscape.
+          </p>
+          <a
+            href="https://www.osl.com/hk-en/academy/article/what-is-decentralized-finance-defi-a-beginners-guide"
+            class="btn"
+            >Read More</a
+          >
+        </div>
+
+        <div class="card">
+          <h2>Security Best Practices for Crypto Investors</h2>
+          <p>
+            Protect your digital assets with these essential security practices.
+          </p>
+          <a
+            href="https://www.arkoselabs.com/explained/guide-to-cryptocurrency-security/"
+            class="btn"
+            >Read More</a
+          >
+        </div>
+      </section>
+
+      <!-- Press Page -->
+      <section id="press" class="page-section">
+        <h1>Press</h1>
+        <p>Latest news and mentions about our platform in the media.</p>
+
+        <div class="card">
+          <h2>CryptoPlatform Raises $20M Series B Funding</h2>
+          <p>
+            We're excited to announce that we've raised $20M in funding to
+            expand our services globally.
+          </p>
+          <a href="#" class="btn">Read Article</a>
+        </div>
+
+        <div class="card">
+          <h2>Forbes: CryptoPlatform Among Top 10 Crypto Apps of 2023</h2>
+          <p>
+            Forbes has recognized our platform as one of the top cryptocurrency
+            applications of the year.
+          </p>
+          <a href="#" class="btn">Read Article</a>
+        </div>
+
+        <div class="card">
+          <h2>Press Kit</h2>
+          <p>
+            Download our logos, brand assets, and company information for media
+            purposes.
+          </p>
+          <a href="#" class="btn">Download Assets</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2023 CryptoPlatform. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      function showPage(pageId) {
+        // Hide all pages
+        document.querySelectorAll(".page-section").forEach((page) => {
+          page.classList.remove("active-page");
+        });
+
+        // Show the selected page
+        document.getElementById(pageId).classList.add("active-page");
+
+        // Scroll to top
+        window.scrollTo(0, 0);
+      }
+    </script>
+  </body>
+</html>

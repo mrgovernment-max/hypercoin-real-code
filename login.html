@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HyperCoin - Login</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="logo">
+          <div class="logo-icon"><i class="fas fa-coins"></i></div>
+          <div class="logo-text">
+            <a class="logo-text" href="index.html">HyperCoin</a>
+          </div>
+        </div>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="signup.html">Sign Up</a>
+        </nav>
+        <button id="themeToggle">🌙</button>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="container">
+        <div>
+          <h2>Login to Your Account</h2>
+          <form id="loginForm">
+            <div class="input-group">
+              <i id="fa" class="fa-solid fa-user"></i>
+              <input
+                type="text"
+                id="username"
+                autocomplete="username"
+                placeholder="Username"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <i id="fa" class="fas fa-lock"></i>
+              <input
+                type="password"
+                autocomplete="current-password"
+                id="password"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <button id="login" type="submit">Login</button>
+            <a
+              href="reset-password.html"
+              style="
+                font-family: sans-serif;
+                cursor: pointer;
+                text-decoration: underline;
+              "
+              >Forgot Password</a
+            >
+          </form>
+          <p id="loginMessage"></p>
+          <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p>© 2023 HyperCoin. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script src="login.js"></script>
+  </body>
+</html>

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hypercoin - Terms & Privacy</title>
+    <style>
+      :root {
+        --primary: #2c3e50;
+        --secondary: #3498db;
+        --accent: #e74c3c;
+        --light: #ecf0f1;
+        --dark: #2c3e50;
+        --success: #27ae60;
+        --warning: #f39c12;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #f8f9fa;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--dark) 100%
+        );
+        color: white;
+        padding: 2rem 0;
+        text-align: center;
+        margin-bottom: 2rem;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      header p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+
+      .tabs {
+        display: flex;
+        margin-bottom: 2rem;
+        border-bottom: 2px solid #ddd;
+      }
+
+      .tab-button {
+        padding: 1rem 2rem;
+        background: #f1f1f1;
+        border: none;
+        cursor: pointer;
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border-radius: 5px 5px 0 0;
+      }
+
+      .tab-button.active {
+        background: var(--secondary);
+        color: white;
+      }
+
+      .tab-content {
+        display: none;
+        background: white;
+        padding: 2rem;
+        border-radius: 5px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        margin-bottom: 2rem;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      h2 {
+        color: var(--primary);
+        margin: 1.5rem 0 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--light);
+      }
+
+      h3 {
+        color: var(--secondary);
+        margin: 1.2rem 0 0.8rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+      }
+
+      ul,
+      ol {
+        margin-left: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      li {
+        margin-bottom: 0.5rem;
+      }
+
+      .highlight {
+        background-color: #fff8e1;
+        padding: 1rem;
+        border-left: 4px solid var(--warning);
+        margin: 1.5rem 0;
+        border-radius: 0 5px 5px 0;
+      }
+
+      .warning {
+        background-color: #ffebee;
+        padding: 1rem;
+        border-left: 4px solid var(--accent);
+        margin: 1.5rem 0;
+        border-radius: 0 5px 5px 0;
+      }
+
+      .accept-section {
+        background-color: var(--light);
+        padding: 1.5rem;
+        border-radius: 5px;
+        margin-top: 2rem;
+        text-align: center;
+      }
+
+      .checkbox-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem 0;
+      }
+
+      .checkbox-container input {
+        margin-right: 10px;
+        width: 18px;
+        height: 18px;
+      }
+
+      .button {
+        background-color: var(--success);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-size: 1.1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .button:hover {
+        background-color: #219653;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 3rem;
+        padding: 1.5rem;
+        background-color: var(--dark);
+        color: white;
+        border-radius: 5px 5px 0 0;
+      }
+
+      @media (max-width: 768px) {
+        .tabs {
+          flex-direction: column;
+        }
+
+        .tab-button {
+          border-radius: 0;
+          margin-bottom: 2px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Hypercoin Investment Platform</h1>
+        <p>Terms of Service and Privacy Policy</p>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="tabs">
+        <button class="tab-button active" onclick="openTab('terms')">
+          Terms of Service
+        </button>
+        <button class="tab-button" onclick="openTab('privacy')">
+          Privacy Policy
+        </button>
+      </div>
+
+      <div id="terms" class="tab-content active">
+        <h2>Terms of Service</h2>
+        <p>Last Updated: September 5, 2025</p>
+
+        <div class="highlight">
+          <p>
+            Please read these Terms of Service carefully before using the
+            Hypercoin Investment Platform.
+          </p>
+        </div>
+
+        <h3>1. Acceptance of Terms</h3>
+        <p>
+          By accessing or using the Hypercoin Investment Platform ("Platform"),
+          you agree to be bound by these Terms of Service and all applicable
+          laws and regulations. If you do not agree with any of these terms, you
+          are prohibited from using or accessing this Platform.
+        </p>
+
+        <h3>2. Investment Risks</h3>
+        <p>You acknowledge and agree that:</p>
+        <ul>
+          <li>
+            Cryptocurrency investments are subject to high market risk and
+            volatility
+          </li>
+          <li>Past performance is not indicative of future results</li>
+          <li>
+            You are solely responsible for any investment decisions and outcomes
+          </li>
+          <li>We do not provide financial advice or guarantee any returns</li>
+        </ul>
+
+        <div class="warning">
+          <p>
+            <strong>Warning:</strong> The value of investments can go down as
+            well as up, and you may receive back less than you invested.
+          </p>
+        </div>
+
+        <h3>4. Investment Services</h3>
+        <p>Our Platform provides:</p>
+        <ul>
+          <li>Digital asset investment opportunities</li>
+          <li>Portfolio tracking and management tools</li>
+          <li>Market data and analytical resources</li>
+          <li>Automated trading features (where available)</li>
+        </ul>
+
+        <h3>5. Fees and Payments</h3>
+        <p>Using our services may involve:</p>
+        <ul>
+          <li>Transaction fees for buying and selling assets</li>
+          <li>Management fees for certain investment products</li>
+          <li>Network fees for blockchain transactions</li>
+        </ul>
+        <p>
+          All fees will be clearly disclosed before you complete any
+          transaction.
+        </p>
+
+        <h3>6. Intellectual Property</h3>
+        <p>
+          All content on this Platform, including text, graphics, logos, and
+          software, is the property of Hypercoin or its licensors and is
+          protected by intellectual property laws.
+        </p>
+
+        <h3>7. Termination</h3>
+        <p>
+          We reserve the right to suspend or terminate your account at our
+          discretion if we believe you have violated these Terms of Service or
+          engaged in fraudulent or illegal activities.
+        </p>
+
+        <h3>8. Limitation of Liability</h3>
+        <p>
+          To the fullest extent permitted by law, Hypercoin shall not be liable
+          for any indirect, incidental, special, consequential, or punitive
+          damages resulting from your use of or inability to use the Platform.
+        </p>
+
+        <h3>9. Governing Law</h3>
+        <p>
+          These Terms shall be governed by and construed in accordance with the
+          laws of the jurisdiction in which Hypercoin operates, without regard
+          to its conflict of law provisions.
+        </p>
+
+        <h3>10. Changes to Terms</h3>
+        <p>
+          We may modify these Terms at any time. We will provide notice of
+          significant changes through our Platform or via email. Continued use
+          after changes constitutes acceptance of the modified Terms.
+        </p>
+
+        <h3>11. Contact Information</h3>
+        <p>For questions about these Terms of Service, please contact us at:</p>
+        <p>
+          Email : support@hypercoin.biz<br />
+          Address: 123 Crypto Street, Digital District, 10001
+        </p>
+      </div>
+
+      <div id="privacy" class="tab-content">
+        <h2>Privacy Policy</h2>
+        <p>Last Updated: September 5, 2025</p>
+
+        <div class="highlight">
+          <p>
+            At Hypercoin, we are committed to protecting your privacy and
+            personal information. This Privacy Policy explains how we collect,
+            use, and safeguard your data.
+          </p>
+        </div>
+
+        <h3>1. Information We Collect</h3>
+        <p>We may collect the following types of information:</p>
+        <ul>
+          <li>
+            <strong>Personal Identification Information:</strong> Name, email
+            address, phone number, date of birth, government-issued ID
+          </li>
+          <li>
+            <strong>Financial Information:</strong> Bank account details,
+            payment card information, transaction history
+          </li>
+          <li>
+            <strong>Technical Information:</strong> IP address, browser type,
+            device information, cookies
+          </li>
+          <li>
+            <strong>Usage Data:</strong> How you interact with our Platform,
+            preferences, and settings
+          </li>
+        </ul>
+
+        <h3>2. How We Use Your Information</h3>
+        <p>We use your information to:</p>
+        <ul>
+          <li>Provide, maintain, and improve our services</li>
+          <li>Process transactions and send notifications</li>
+          <li>Verify your identity and prevent fraud</li>
+          <li>Communicate with you about products, services, and updates</li>
+          <li>Comply with legal and regulatory requirements</li>
+        </ul>
+
+        <h3>3. Data Sharing and Disclosure</h3>
+        <p>We may share your information with:</p>
+        <ul>
+          <li>
+            <strong>Service Providers:</strong> Third parties who help us
+            operate our Platform
+          </li>
+          <li>
+            <strong>Legal Authorities:</strong> When required by law or to
+            protect our rights
+          </li>
+          <li>
+            <strong>Business Transfers:</strong> In connection with a merger,
+            acquisition, or sale of assets
+          </li>
+        </ul>
+        <p>We do not sell your personal information to third parties.</p>
+
+        <h3>4. Data Security</h3>
+        <p>
+          We implement appropriate technical and organizational measures to
+          protect your personal information, including:
+        </p>
+        <ul>
+          <li>Encryption of sensitive data</li>
+          <li>Secure servers and network infrastructure</li>
+          <li>Regular security assessments and testing</li>
+          <li>Employee training on data protection</li>
+        </ul>
+
+        <h3>5. Data Retention</h3>
+        <p>
+          We retain your personal information for as long as necessary to
+          fulfill the purposes outlined in this Privacy Policy, unless a longer
+          retention period is required or permitted by law.
+        </p>
+
+        <h3>6. Your Rights</h3>
+        <p>Depending on your jurisdiction, you may have the right to:</p>
+        <ul>
+          <li>Access and receive a copy of your personal information</li>
+          <li>Correct inaccurate or incomplete data</li>
+          <li>Request deletion of your personal information</li>
+          <li>Object to or restrict certain processing activities</li>
+          <li>Data portability</li>
+        </ul>
+
+        <h3>7. Cookies and Tracking Technologies</h3>
+        <p>We use cookies and similar technologies to:</p>
+        <ul>
+          <li>Authenticate users and maintain sessions</li>
+          <li>Remember your preferences and settings</li>
+          <li>Analyze how our Platform is used</li>
+          <li>Deliver targeted advertisements (where applicable)</li>
+        </ul>
+        <p>You can control cookies through your browser settings.</p>
+
+        <h3>8. International Data Transfers</h3>
+        <p>
+          Your information may be transferred to and processed in countries
+          other than your own. We ensure appropriate safeguards are in place for
+          these transfers.
+        </p>
+
+        <h3>9. Children's Privacy</h3>
+        <p>
+          Our Platform is not intended for children under 18. We do not
+          knowingly collect personal information from children.
+        </p>
+
+        <h3>10. Changes to This Policy</h3>
+        <p>
+          We may update this Privacy Policy from time to time. We will notify
+          you of significant changes by posting the new policy on our Platform
+          or sending you a notification.
+        </p>
+
+        <h3>11. Contact Us</h3>
+        <p>
+          If you have questions about this Privacy Policy or our data practices,
+          please contact us at:
+        </p>
+        <p>
+          Email: support@hypercoin.biz<br />
+          Address: 123 Crypto Street, Digital District, NB
+          <i
+            >this site is not legit. Funds may disappear at any point in time</i
+          >
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>© 2025 Hypercoin Investment Platform. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      function openTab(tabName) {
+        // Hide all tab content
+        var tabContent = document.getElementsByClassName("tab-content");
+        for (var i = 0; i < tabContent.length; i++) {
+          tabContent[i].classList.remove("active");
+        }
+
+        // Remove active class from all tab buttons
+        var tabButtons = document.getElementsByClassName("tab-button");
+        for (var i = 0; i < tabButtons.length; i++) {
+          tabButtons[i].classList.remove("active");
+        }
+
+        // Show the specific tab content
+        document.getElementById(tabName).classList.add("active");
+
+        // Add active class to the button that opened the tab
+        event.currentTarget.classList.add("active");
+      }
+
+      // Scroll to top when switching tabs
+      document.querySelectorAll(".tab-button").forEach((button) => {
+        button.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      });
+    </script>
+  </body>
+</html>
