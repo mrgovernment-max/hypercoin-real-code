@@ -79,10 +79,7 @@
           </div>
         </div>
 
-        <p style="color: yellowgreen">
-          <i style="color: red; margin-right: 15px" class="fa-solid fa-info"></i
-          >Pay with stripe's checkout form instead of apple pay
-        </p>
+        
 
         <button type="submit" id="submit-button">
           <span>Pay Now</span>
@@ -116,7 +113,7 @@
 
     <script src="https://js.stripe.com/v3/"></script>
     <script>
-      const stripe = Stripe("pk_live_51Rpsq2LRwcoOq8wgsLstZO5LcuIqjk7M54Kisklu5AbUHZfeC1r1RDaEA6bz7iq6eDxFiR7yqLGrx80PsGYmdqGt007D5oIJL3");
+      const stripe = "skrr"
       const form = document.getElementById("payment-form");
       const submitButton = document.getElementById("submit-button");
       const loader = document.getElementById("loader");
@@ -195,7 +192,6 @@
     
         } catch (err) {
           console.error("Error:", err);
-          alert("Server error. Check console for details.");
           resetButton();
         }
       });
